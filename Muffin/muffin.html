@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      background: #F5F6F8;
+      font-size: 16px;
+      font-family: "NanumSquare",sans-serif;
+      color: #3a454c;
+    }
+
+    .main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .main>div>div,
+    .main>div>span {
+      text-align: center;
+    }
+
+    .main span {
+      display: block;
+      padding: 10px 0px;
+      font-size: 2rem;
+    }
+    .main .app span {
+        margin-top: 100px;
+        font-size: 1rem;
+        padding: 10px 30px 10px 30px;
+        background-color: #ed125f;
+        color: #ffffff;
+        border-radius:12px;
+    }
+      .main .logo img {
+          width:100px;
+          height:100px;
+          border-radius:20px;
+      }
+      
+  </style>
+      <script type="text/javascript">
+          function checkMobile(){
+            var varUA = navigator.userAgent.toLowerCase(); //userAgent 값 얻기
+            if ( varUA.indexOf('android') > -1) {
+                //안드로이드
+                return "android";
+            } else if ( varUA.indexOf("iphone") > -1||varUA.indexOf("ipad") > -1||varUA.indexOf("ipod") > -1 ) {
+                //IOS
+                return "ios";
+            } else {
+                //아이폰, 안드로이드 외
+                return "other";
+            }
+          }
+          
+          var playstoreUrl = "https://play.google.com/store/apps/details?id=com.ske.phone.epay";
+          var appstoreUrl = "https://apps.apple.com/KR/app/id1507316276?mt=8";
+          function goStore(){
+            if(checkMobile() == "android"){
+                window.location.href = playstoreUrl;
+            }else if(checkMobile() == "android"){
+                window.location.href = appstoreUrl;
+            }
+          }
+          
+          var appSchemeA = "chaoneapp://navigation/membership";
+          var appSchemeI = "muffinapp://navigation/membership";
+          function runApp(){
+            if(checkMobile() == "android"){
+                window.location.href = appSchemeA;
+            }else if(checkMobile() == "android"){
+                window.location.href = appSchemeI;
+            }
+          }
+      </script>
+  </head>
+  <body onload="runApp();">
+      <div class="main">
+          <div class="workarea">
+              <div id="logo" class="logo">
+                  <img src="img/muffin_icon.png" onclick="runApp();"/>
+              </div>
+              <span>Muffin</span>
+              <div class="app" onclick="goStore();">
+                  <span>Muffin 설치하기</span>
+              </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          
+
+      </script>
+  </body>
+</html>
