@@ -77,10 +77,12 @@
             var appSchemeA = "chaoneapp://navigation/membership";
             var appSchemeI = "muffinapp://navigation/membership";
             function runApp(){
+                checkInstallApp();
+
                 if(checkMobile() == "android"){  
-                    window.location.href = appSchemeA;
+                    location.href = appSchemeA;
                 }else if(checkMobile() == "ios"){
-                    window.location.href = appSchemeI;
+                    location.href = appSchemeI;
                 }
             }
           
@@ -95,7 +97,6 @@
                     if(document.webkitHidden || document.hidden){
                         clearTimers();
                         console.log('앱이 설치 되어 있습니다.');
-                        runApp();
                     }
                 }
                 
@@ -109,7 +110,7 @@
             }
       </script>
   </head>
-  <body onload="checkInstallApp();">
+  <body onload="runApp();">
       <div class="main">
           <div class="workarea">
               <div id="logo" class="logo">
