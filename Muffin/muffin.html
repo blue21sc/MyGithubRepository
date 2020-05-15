@@ -77,37 +77,65 @@
             var appSchemeA = "chaoneapp://navigation/membership";
             var appSchemeI = "muffinapp://navigation/membership";
             function runApp(){
-                checkInstallApp();
-
                 if(checkMobile() == "android"){  
                     location.href = appSchemeA;
                 }else if(checkMobile() == "ios"){
                     location.href = appSchemeI;
                 }
-            }
-          
-          
-            function checkInstallApp(){
-                function clearTimers(){
-                    clearInterval(heartbeat);
-                    clearTimeout(timer);
-                }
+                
+                // 앱이 설치 되어있는지 체크
+                schInterval = setInterval(intervalSch, 500);
 
-                function intervalHeartbeat(){
-                    if(document.webkitHidden || document.hidden){
-                        clearTimers();
-                        console.log('앱이 설치 되어 있습니다.');
-                    }
-                }
-                
-                heartbeat = setInterval(intervalHeartbeat, 200);
-                var deLay = 1000;
-                timer = setTimeout(function() {
-                    console.log('앱이 없습니다.');
+                timer = setTimeout(function(){
+                    console.log('앱이 설치되어있지 않습니다.');
+                    clearInterval(schInterval);
                     goStore();
-                }, deLay);
-                
+                }, 2000);
+
             }
+          
+            var timer;	// 타이머
+            var schInterval; // 인터벌
+
+            // 인터벌, 타이머 삭제
+            function clearTimer(){
+                clearInterval(schInterval);
+                clearTimeout(timer);
+            }
+
+            // 인터벌 마다 동작할 기능
+            function intervalSch(){
+                // 매 인터벌 마다 웹뷰가 활성화 인지 체크
+                if(document.webkitHidden || document.hidden){// 웹뷰 비활성화
+                    clearTimer();// 앱이 설치되어있을 경우 타이머 제거
+                    console.log("앱이 설치 되어 있습니다.");
+                }else{	// 웹뷰 활성화
+                    console.log("타이머 동작");
+                }
+            }
+
+          
+//            function checkInstallApp(){
+//                function clearTimers(){
+//                    clearInterval(heartbeat);
+//                    clearTimeout(timer);
+//                }
+//
+//                function intervalHeartbeat(){
+//                    if(document.webkitHidden || document.hidden){
+//                        clearTimers();
+//                        console.log('앱이 설치 되어 있습니다.');
+//                    }
+//                }
+//                
+//                heartbeat = setInterval(intervalHeartbeat, 200);
+//                var deLay = 1000;
+//                timer = setTimeout(function() {
+//                    console.log('앱이 없습니다.');
+//                    goStore();
+//                }, deLay);
+//                
+//            }
       </script>
   </head>
   <body onload="runApp();">
