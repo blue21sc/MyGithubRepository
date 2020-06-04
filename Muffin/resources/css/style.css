@@ -1,0 +1,372 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap');
+
+
+
+button {
+    border: none;
+    padding: 0;
+}
+
+h3 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* body */
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: border-box;
+}
+
+/* header */
+.header {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+.wrapper {
+    margin: 12.5px 20px 12.5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    background: url('../images/muffin_bi.png') no-repeat;
+    background-size: cover;
+}
+
+.logo.default {
+    width: 64px;
+    height: 37.5px;   
+}
+
+.logo.small {
+    width: 45px;
+    height: 26.5px;
+}
+
+.intro-link {
+    font-size: 13px;
+    letter-spacing: -0.26px;
+    color: rgb(58, 69, 76);
+    cursor: pointer;
+}
+
+
+/* contents */
+
+.container {
+    padding-top: 50px;
+    /* header 뺌 */
+    height: calc(100vh - 50px);
+    position: relative;
+}
+
+/* swiper */
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.contents-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 회사 소개 */
+.contents-wrapper.intro {
+    align-items: flex-start;
+    height: auto;
+}
+
+
+.contents {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.contents.first {
+    margin-top: 84px;
+    margin-bottom: 61px;
+}
+
+.contents.youtube {
+    margin-top: 57px;
+}
+
+.contents .title {
+    font-size: 28px;
+    line-height: 36px;
+    color: rgb(58, 69, 76);
+    font-weight: bold;
+}
+
+.contents .content-wrapper {
+    margin-top: 16.5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contents .content {
+    font-size: 13px;
+    line-height: 18px;
+    color: rgb(138, 141, 142);
+}
+
+
+.image-wrapper {
+    width: calc(100vw - 60px);
+    position: absolute;
+    bottom: 99px;
+}
+
+.image-wrapper.phone {
+    width: calc(100vw - 120px);
+    position: absolute;
+    bottom: 61px;
+}
+
+.image-wrapper > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* 유튜브  */
+
+.youtube-wrapper {
+    margin-top: 60px;
+    width: calc(100vw - 40px);
+}
+
+.youtube-wrapper > iframe {
+    height: 188.5px;
+    width: 100%;
+}
+
+/* 회사 소개 */
+
+.introduction {
+    width: 100%;
+    height: 372.5px;
+    background-color: rgb(244, 244, 244);
+    position: absolute;
+    bottom: 0px;
+    padding: 30px 0 61px 20px;
+}
+
+.copyright {
+    font-size: 13px;
+    line-height: 18px;
+    color: rgb(138, 141, 142);
+    margin-top: 16px;
+}
+
+.info {
+    font-size: 15px;
+    line-height: 26px;
+    color: rgb(53, 69, 76);
+    margin-top: 40.5px;
+}
+
+.info a {
+    font-size: 15px;
+    line-height: 26px;
+    color: rgb(53, 69, 76);
+    margin-top: 40.5px;
+}
+
+.terms {
+    margin-top: 49.5px;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.terms > span {
+    font-size: 15px;
+    line-height: 30px;
+    color: rgb(100, 103, 104);
+}
+
+/* fixed-area */
+
+.hide {
+    display: none;
+}
+
+.fixed-area {
+    width: 100%;
+    height: 61px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.fixed-area .btn-app-download {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    background-color: rgb(240, 2, 93);
+    color: rgb(255, 255, 255);
+    font-size: 19px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+/* 팝업 */
+
+.show {
+    display: block !important;
+}
+
+.dim-background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.18);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.popup-container {
+    background-color: rgb(255, 255, 255);
+    transform: translate(-50%,-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100vw - 40px);
+    height: calc(100vh - 68px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-contents-wrapper {
+    width: calc(100% - 42px);
+    height: calc(100% - 64px);
+}
+
+.popup-title {
+    font-size: 20px;
+    color: rgb(58, 69, 76);
+    text-align: center;
+    display: block;
+}
+
+.popup-contents {
+    font-size: 14px;
+    line-height: 19px;
+    color: rgb(58, 69, 76);
+    margin-top: 25px;
+    height: 100%;
+}
+
+.popup-contents > iframe{
+    overflow-y: auto;
+    height: calc(100% - 29px - 20px);
+    width: 100%;
+    border: 0;
+}
+
+.popup-contents > div{
+    overflow-y: auto;
+    height: calc(100% - 29px - 20px);
+}
+
+.btn-popup-close {
+    position: absolute;
+    right: 19.5px;
+    top: 20px;
+    background: url(../images/btn_popup_close.png) no-repeat;
+    background-size: cover;
+    width: 16px;
+    height: 15.5px;
+}
+
+/* iphone plus */
+
+
+@media only screen 
+    and (min-device-width : 414px) 
+    and (max-device-width : 736px)
+    and (-webkit-min-device-pixel-ratio: 3) {
+
+        .image-wrapper {
+            bottom: 99px !important;
+        }
+
+        .image-wrapper.phone {
+            bottom: 61px !important;
+        }
+
+        .contents .title {
+            font-size: 28px !important;
+            line-height: 36px !important;
+        }
+    
+        .contents .content {
+            font-size: 13px !important;
+        }
+    
+        .contents .content-wrapper {
+            margin-top: 16.5px !important;
+        }
+}
+
+
+/* iphone x */
+
+@media only screen
+    and (min-device-width: 375px) 
+    and (max-device-width: 812px) 
+    and (-webkit-min-device-pixel-ratio: 3) {
+        
+    .image-wrapper {
+        bottom: 104px;
+    }
+
+    .contents .title {
+        font-size: 38px;
+        line-height: 55px;
+    }
+
+    .contents .content {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .contents .content-wrapper {
+        margin-top: 53.5px;
+    }
+
+}
+
