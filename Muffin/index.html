@@ -13,7 +13,7 @@
     <div class="header">
         <div class="wrapper">
             <div class="logo default"></div>
-            <span class="intro-link">회사소개</span>
+            <a class="intro-link" href="http://www.skenergy.com/company/overview.asp" target="_blank">회사소개</a>
         </div>
     </div>
     <!-- contents (swiper) -->
@@ -104,8 +104,8 @@
                                 사업자번호 : 101-86-60120
                             </div>
                             <div class="terms">
-                                <span data-term="service">서비스 이용약관</span>
-                                <span data-term="privacy">개인정보 처리 방침</span>
+                                <a href="https://app.enclean.com/front/policy/policy_muffin_service" target="_blank">서비스 이용약관</a>
+                                <a href="https://app.enclean.com/front/policy/policy_info_protection" target="_blank">개인정보 처리방침</a>
                             </div>
                         </div>
                     </div>
@@ -119,22 +119,6 @@
         <button type="button" class="btn-app-download">앱 설치하기</button>
     </div>
 
-    <!-- Popup-->
-    <div class="popup">
-        <!--dim 처리-->
-        <div class="dim-background"></div>
-        <!--popup contents-->
-        <div class="popup-container">
-            <div class="popup-contents-wrapper">
-                <span class="popup-title"></span>
-                <div class="popup-contents">
-                    <iframe src=""></iframe>
-                </div>
-                <button type="button" class="btn-popup-close"></button>
-            </div>
-        </div>
-    </div>
-
     <script src="./resources/js/swiper.min.js"></script>
 
     <script>
@@ -144,36 +128,6 @@
         direction: 'vertical'
     });
     
-    //회사 소개 이동
-    document.querySelector('.intro-link').addEventListener('click', function() {
-        location.href='http://www.skenergy.com/company/overview.asp';
-    });
-
-
-    //팝업 띄우기
-    document.querySelector('.terms').addEventListener('click', function(e) {
-
-        //popup title 세팅
-        document.querySelector('.popup-title').innerHTML = e.target.innerHTML;
-
-        var urlPath = '';
-
-        //iframe url 세팅
-        if(e.target.dataset.term === 'service') {
-            urlPath = 'https://app.enclean.com/front/policy/policy_muffin_service';
-        } else {
-            urlPath = 'https://app.enclean.com/front/policy/policy_info_protection';
-        }
-
-        document.querySelector('.popup-contents > iframe').setAttribute('src', urlPath);
-        document.querySelector('.popup').classList.add('show');
-    });
-
-    //팝업 닫기
-    document.querySelector('.btn-popup-close').addEventListener('click', function() {
-        document.querySelector('.popup').classList.remove('show');
-    });
-
     //기기 해상도에 따라 text 다르게 설정하기
     function setText() {
 
