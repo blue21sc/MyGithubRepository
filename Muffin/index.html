@@ -195,7 +195,17 @@
 
     downloadApp();
     
-
+    
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+        
+    
+        
+    
     </script>
     
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -217,7 +227,9 @@
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
+      var firebaseAnalytics = firebase.analytics();
+        
+      firebaseAnalytics.logEvent(getParameterByName('utm_source')+'_'+getParameterByName('utm_medium')+'_'+getParameterByName('utm_campaign'));
     </script>
 </body>
 </html>
