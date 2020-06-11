@@ -195,6 +195,12 @@
 
     downloadApp();
     
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
     </script>
     
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -219,7 +225,7 @@
       firebase.initializeApp(firebaseConfig);
       var firebaseAnalytics = firebase.analytics();
       //GA 이벤트 수집  
-      //firebaseAnalytics.logEvent(firebase.analytics.EventName.PAGE_VIEW, null);
+      firebaseAnalytics.logEvent(firebase.analytics.EventName.PAGE_VIEW, {"utm_source":getParameterByName("utm_source"),"utm_medium":getParameterByName("utm_medium"),"utm_campaign":getParameterByName("utm_campaign")});
     </script>
 </body>
 </html>
