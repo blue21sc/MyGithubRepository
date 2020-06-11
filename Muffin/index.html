@@ -231,7 +231,8 @@
       firebase.initializeApp(firebaseConfig);
       var firebaseAnalytics = firebase.analytics();
         
-      firebaseAnalytics.logEvent(getParameterByName('utm_source')+'_'+getParameterByName('utm_medium')+'_'+getParameterByName('utm_campaign'));
+      //firebaseAnalytics.logEvent(getParameterByName('utm_source')+'_'+getParameterByName('utm_medium')+'_'+getParameterByName('utm_campaign'));
+        firebaseAnalytics.logEvent(firebase.analytics.EventName.PAGE_VIEW, null);
     </script>
 </body>
 </html>
