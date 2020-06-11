@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
         <meta name="format-detection" content="telephone=no">
+        <link type="text/css" rel="stylesheet" href="./resources/css/style.css">
         <style>
             html, body {
               height: 100%;
@@ -33,6 +34,7 @@
               display: block;
               padding: 10px 0px;
               font-size: 26px;
+              font-weight: bold;
             }
             .main .app span {
                 margin-top: 100px;
@@ -42,7 +44,7 @@
                 color: #ffffff;
                 border-radius:12px;
             }
-            .main .logo img {
+            .main .appIcon img {
                 width:100px;
                 height:100px;
                 border-radius:20px;
@@ -79,6 +81,7 @@
             var appSchemeA = "muffinapp://navigation/membership";
             var appSchemeI = "muffinapp://navigation/membership";
             function runApp(){
+                
                 if(checkMobile() == "android"){  
                     location.href = appSchemeA;
                 }else if(checkMobile() == "ios"){
@@ -93,7 +96,7 @@
                     clearInterval(schInterval);
                     goStore();
                 }, 2000);
-
+                
             }
           
             var timer;	// 타이머
@@ -120,7 +123,7 @@
   <body onload="runApp();">
       <div class="main">
           <div class="workarea">
-              <div id="logo" class="logo">
+              <div id="appIcon" class="appIcon">
                   <img onclick="runApp();"/>
               </div>
               <span>Muffin</span>

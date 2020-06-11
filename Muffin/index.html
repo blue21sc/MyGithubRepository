@@ -116,12 +116,14 @@
     
     <!--fixed-area-->
     <div class="fixed-area">
-        <button type="button" class="btn-app-download">앱 설치하기</button>
+        <a href="#" class="btn-app-download" target="_blank">앱 설치하기</a>
     </div>
 
     <script src="./resources/js/swiper.min.js"></script>
 
     <script>
+
+    var varUA = navigator.userAgent.toLowerCase();
 
     //swiper js 설정
     var swiper = new Swiper('.swiper-container', {
@@ -179,9 +181,43 @@
         document.querySelector('.contents.youtube > .content-wrapper').innerHTML = content4;
     }
 
+    function downloadApp() {
+        var url = "";
+        if (varUA.indexOf('android') > -1) {
+            url = "https://play.google.com/store/apps/details?id=com.ske.phone.epay";
+        } else if (varUA.indexOf("iphone") > -1||varUA.indexOf("ipad") > -1||varUA.indexOf("ipod") > -1 ) {
+            url = "https://apps.apple.com/app/id1507316276?mt=8";
+        }
+        document.querySelector('.btn-app-download').setAttribute('href', url);
+    }
+
     setText();
 
-    </script>
+    downloadApp();
+    
 
+    </script>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBsN7G_U-qpCtbiWwy-pZVGJ5YIrX75b2s",
+        authDomain: "sk-epay-project.firebaseapp.com",
+        databaseURL: "https://sk-epay-project.firebaseio.com",
+        projectId: "sk-epay-project",
+        storageBucket: "sk-epay-project.appspot.com",
+        messagingSenderId: "247121418106",
+        appId: "1:247121418106:web:83ab4a1311ae8ec592e8c3",
+        measurementId: "G-THL10JH2ZP"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
 </body>
 </html>
