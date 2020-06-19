@@ -103,10 +103,16 @@ body {
 
 .container {
     background-color: rgb(252, 252, 252);
-    position: relative;
     height: calc(100vh - 63px);
     min-height: 505px;
-    overflow: auto;
+}
+
+.slide-wrapper {
+    height: 100%;
+    min-height: 555px;
+    max-width: 404px;
+    /* max-width: 322px; */
+    margin: 0 auto;
 }
 
 /* swiper */
@@ -154,7 +160,7 @@ body {
 
 .contents-wrapper.first {
     background: url(../images/01.png) no-repeat;
-    background-size: calc(100vw - 70px);
+    background-size: calc(100vw - 93px);
     background-position: center calc(100% - 99px);
 }
 
@@ -211,7 +217,6 @@ body {
     width: calc(100vw - 40px);
     margin: 30px auto 121px auto;
 }
-
 
 .copyright {
     font-size: 13px;
@@ -292,6 +297,12 @@ body {
         padding-top: 0;
     }
 
+    .slide-wrapper {
+        max-width: 1280px !important;
+        /* max-width: 1180px !important; */
+        /* min-height: 500px; */
+    }
+
     .wrapper {
         margin: 0 auto;
         width: calc(100vw - 372px);
@@ -322,22 +333,22 @@ body {
     }
 
     .contents-wrapper.first {
-        background-size: 735px 614px;
+        background-size: calc(100% - 610px);
         background-position: right center;
     }
 
     .contents-wrapper.second {
-        background-size: 390px 650px;
+        background-size: calc(100% - 855px);
         background-position: right calc(100% - 84px) bottom;
     }
 
     .contents-wrapper.third {
-        background-size: 390px 650px;
+        background-size: calc(100% - 855px);
         background-position: left calc(100% - 84px) bottom;
     }
 
     .contents-wrapper.fourth {
-        background-size: 390px 650px;
+        background-size: calc(100% - 855px);
         background-position: right calc(100% - 84px) bottom;
     }
 
@@ -478,24 +489,103 @@ body {
     }
 }
 
+@media (min-width: 768px)
+    and (max-height: 744px) {
+
+    .slide-wrapper {
+        max-width: 1120px !important;
+        min-height: 500px;
+    }
+
+    .contents-wrapper.second {
+        background-size: calc(100% - 804px);
+    }
+
+    .contents-wrapper.third {
+        background-size: calc(100% - 804px);
+    }
+
+    .contents-wrapper.fourth {
+        background-size: calc(100% - 804px);
+    }
+}
+
+@media (max-width: 768px)
+    and (max-height: 996px) {
+
+    .contents-wrapper.first {
+        background-size: calc(100% - 184px);
+    }
+
+    .contents-wrapper.second {
+        background-size: calc(100% - 190px);
+    }
+
+    .contents-wrapper.third {
+        background-size: calc(100% - 190px);
+    }
+
+    .contents-wrapper.fourth {
+        background-size: calc(100% - 190px);
+    }
+}
+
+@media (max-width: 768px)
+    and (min-height: 500px) {
+
+    .contents-wrapper.first {
+        background-size: calc(100% - 184px);
+    }
+
+    .contents-wrapper.second {
+        background-size: calc(100% - 175px);
+    }
+
+    .contents-wrapper.third {
+        background-size: calc(100% - 175px);
+    }
+
+    .contents-wrapper.fourth {
+        background-size: calc(100% - 175px);
+    }
+}
+
+
+/* iphone se */
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+    .slide-wrapper {
+        min-height: auto;
+    }
+
+    .contents-wrapper.first {
+        background-size: calc(100vw - 93px);
+    }
+
+    .contents-wrapper.second {
+        background-size: calc(100% - 135px);
+    }
+
+    .contents-wrapper.third {
+        background-size: calc(100% - 135px);
+    }
+
+    .contents-wrapper.fourth {
+        background-size: calc(100% - 135px);
+    }
+    
+}
+
 /* iphone plus */
 
 @media only screen 
     and (min-device-width : 414px) 
-    and (max-device-width : 736px)
+    and (max-device-height : 736px)
     and (-webkit-min-device-pixel-ratio: 3) {
-
-    .image-wrapper {
-        bottom: 99px !important;
-        max-width: 354px !important;
-        max-height: 340px !important;
-    }
-
-    .image-wrapper.phone {
-        bottom: 61px !important;
-        max-width: 255px !important;
-        max-height: 381.5px !important;
-    }
 
     .contents .title {
         font-size: 28px !important;
@@ -510,7 +600,6 @@ body {
     .contents .content-wrapper {
         margin-top: 16.5px !important;
     }
-
 }
 
 
@@ -518,13 +607,9 @@ body {
 
 @media only screen
     and (min-device-width: 375px) 
-    and (max-device-width: 812px) 
+    and (max-device-height: 812px) 
     and (-webkit-min-device-pixel-ratio: 3) {
         
-    .image-wrapper {
-        bottom: 104px;
-    }
-
     .contents .title {
         font-size: 38px;
         line-height: 55px;
@@ -538,6 +623,69 @@ body {
     .contents .content-wrapper {
         margin-top: 53.5px;
     }
-
 }
+
+@media only screen 
+    and (min-device-width: 360px) 
+    and (max-device-height: 600px) {
+    /* and (-webkit-device-pixel-ratio: 4) { */
+
+    .contents-wrapper.first {
+        background-size: calc(100vw - 150px);
+    }
+
+    .contents-wrapper.second {
+        background-size: calc(100vw - 170px);
+    }
+
+    .contents-wrapper.third {
+        background-size: calc(100vw - 170px);
+    }
+
+    .contents-wrapper.fourth {
+        background-size: calc(100vw - 170px);
+    }
+}
+
+@media only screen 
+    and (min-device-width : 375px) 
+    and (max-device-height : 650px) {
+    /* and (-webkit-min-device-pixel-ratio: 3) { */
+
+    .contents-wrapper.second {
+        background-size: calc(100vw - 191px);
+    }
+
+    .contents-wrapper.third {
+        background-size: calc(100vw - 191px);
+    }
+
+    .contents-wrapper.fourth {
+        background-size: calc(100vw - 191px);
+    }
+}
+
+@media only screen 
+    and (min-device-width : 414px) 
+    and (max-device-height : 699px) {
+    /* and (-webkit-min-device-pixel-ratio: 3) { */
+
+
+    .contents-wrapper.first {
+        background-size: calc(100vw - 155px);
+    }
+
+    .contents-wrapper.second {
+        background-size: calc(100vw - 220px);
+    }
+
+    .contents-wrapper.third {
+        background-size: calc(100vw - 220px);
+    }
+
+    .contents-wrapper.fourth {
+        background-size: calc(100vw - 220px);
+    }
+}
+
 

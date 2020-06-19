@@ -132,5 +132,28 @@
               </div>
           </div>
       </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAe84nglRo2yhbYdBI2OIsK64tqbU8etPE",
+        authDomain: "sk-epay-project.firebaseapp.com",
+        databaseURL: "https://sk-epay-project.firebaseio.com",
+        projectId: "sk-epay-project",
+        storageBucket: "sk-epay-project.appspot.com",
+        messagingSenderId: "247121418106",
+        appId: "1:247121418106:web:83ab4a1311ae8ec592e8c3",
+        measurementId: "G-THL10JH2ZP"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      var firebaseAnalytics = firebase.analytics();
+      //GA 이벤트 수집  
+      //firebaseAnalytics.logEvent(firebase.analytics.EventName.PAGE_VIEW, {"utm_source":getParameterByName("utm_source"),"utm_medium":getParameterByName("utm_medium"),"utm_campaign":getParameterByName("utm_campaign")});
+    </script>
   </body>
 </html>
