@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, width=device-width, height=device-height">
     <title>머핀 - Muffin</title>
     <link type="text/css" rel="stylesheet" href="./resources/css/style.css">
     <!-- swiper js -->
@@ -73,7 +73,6 @@
                         <!-- slide -->
                         <div class="swiper-slide">
                             <div class="slide-wrapper">
-
                                 <div class="contents-wrapper youtube">
                                     <div class="contents youtube">
                                         <span class="title"></span>
@@ -158,7 +157,7 @@
 
         //화면 해상도에 따라서 => text 넣어주기
         if(width === 375 && height === 812) {
-            content1 = '<span class="content">자주 이용하는 주유소를 즐겨찾기하여 <br/> 홈화면에 등록하고</span>';
+            content1 = '<span class="content">자주 이용하는 주요소를 즐겨찾기하여 <br/> 홈화면에 등록하고</span>';
             content1 += '<span class="content">원터치 주유로 쉽고 빠르게 예약하세요.</span>';
             
             content2 = '<span class="content">번거로운 주유, 결제 정보를 <br/> 매번 입력하지 말고</span>';
@@ -173,7 +172,7 @@
             content4 += '<span class="content">사용 영상을 확인해보세요.</span>';
 
         } else {
-            content1 = '<span class="content">자주 이용하는 주유소를 즐겨찾기하여 홈화면에 등록하고</span>';
+            content1 = '<span class="content">자주 이용하는 주요소를 즐겨찾기하여 홈화면에 등록하고</span>';
             content1 += '<span class="content">원터치 주유로 쉽고 빠르게 예약하세요.</span>';
             
             content2 = '<span class="content">번거로운 주유, 결제 정보를 매번 입력하지 말고</span>';
@@ -206,9 +205,8 @@
         }
         document.querySelector('.btn-app-download').setAttribute('href', url);
     }
-    
-    setText();
 
+    setText();
     downloadApp();
 
     function getParameterByName(name) {
