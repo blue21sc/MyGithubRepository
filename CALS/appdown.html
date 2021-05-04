@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<style type="text/css">
+
+element {
+	text-transform: capitalize;
+	text-decoration: underline;
+	word-wrap: normal;
+	font-variant: normal;
+	font-weight: bold;
+	text-align: left;
+}
+
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+<title></title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+<script>
+	if (!window.jQuery) {
+		document.write('<script src="${pageContext.request.contextPath}/resources/js/jquery-2.0.2.min.js"><\/script>');
+	}
+</script>
+<script>
+
+var excuteurl_and = '';	    //앱실행 경로
+var installurl_and = '';	//앱다운 경로
+
+var excuteurl_ios = '';	    //앱실행 경로
+var installurl_ios = '';	//앱다운 경로
+
+var uagentLow = '';
+
+/* function goApp(){
+
+	$("body").append("<iframe id='infavorLink'></iframe>");
+	$("#infavorLink").hide();
+	
+	var openAt = new Date,
+    uagentLow = navigator.userAgent.toLocaleLowerCase(),
+    chrome25,
+    kitkatWebview;
+	
+	setTimeout( function() {
+	    if (new Date - openAt < 4000) {
+	        if (uagentLow.search("android") > -1) {
+	            $("#infavorLink").attr("src","market://details?id=com.soribada.android&hl=ko");
+	        } else if (uagentLow.search("iphone") > -1) {
+	            location.replace("https://itunes.apple.com/kr/app/solibada-myujig-mujehan-eum/id346528006?mt=8");
+	        }
+	    }
+	}, 1000);
+	 
+	if(uagentLow.search("android") > -1){
+	    chrome25 = uagentLow.search("chrome") > -1 && navigator.appVersion.match(/Chrome\/\d+.\d+/)[0].split("/")[1] > 25;
+	    kitkatWebview = uagentLow.indexOf("naver") != -1 || uagentLow.indexOf("daum") != -1;
+	    if(chrome25 && !kitkatWebview){
+	        document.location.href = "intent://applink?param=value#Intent;scheme=soribada30;package=com.soribada.android;end";
+	    }else{
+	        $("#infavorLink").attr("src", 'soribada30://applink?param=value');
+	    }
+	}else if(uagentLow.search("iphone") > -1){
+	    $("#infavorLink").attr("src", 'soribada30://applink?param=value');
+	}
+} */
+
+
+function iosGoApp(){
+
+	var openAt = new Date;
+	$("body").append("<iframe id='infavorLink'></iframe>");
+	$("#infavorLink").hide();
+	setTimeout( function() {
+	    //if(new Date - openAt < 4000) {
+	        location.replace( installurl_ios );
+	    //}
+	}, 1000);
+	 
+	$("#infavorLink").attr("src",  excuteurl_ios );
+};
+
+function andGoApp(){
+	
+	debugger;
+	$("body").append("<iframe id='infavorLink'></iframe>");
+	$("#infavorLink").hide();
+	setTimeout( function() {
+	  	location.replace( installurl_and );
+	}, 1000);
+	$("#infavorLink").attr("src", excuteurl_and );
+};
+
+
+function init(){
+	$.ajax({
+		url : '<ifvb:action name="getAppLink"/>',
+		type : "POST",
+		dataType : 'json',
+		//data : $.toJSON( obj.data ),
+		contentType : "application/json; charset=utf-8",
+		success : function(result){
+			appLinkArr = result;
+			linkDataSetting();
+		},
+		async : true,
+		complete : function(xhr, status) {
+		}
+	});
+};
+
+function linkDataSetting(){
+	
+	var andLinkData = getLinkData('play.google.com');
+	var iosLinkData = getLinkData('itunes.apple.com');
+    
+	excuteurl_and = andLinkData.excuteurl;
+	installurl_and = andLinkData.installurl;
+	excuteurl_ios = iosLinkData.excuteurl;
+	installurl_ios = iosLinkData.installurl;
+	
+};
+
+function getLinkData(type){
+	for( var i = 0; i<appLinkArr.length; i++ ){
+		if( appLinkArr[i].installurl.indexOf( type ) > -1 ){
+			return appLinkArr[i];
+		}
+	}
+};
+
+$(document).ready(function(){
+	
+	uagentLow = navigator.userAgent.toLocaleLowerCase();
+	
+	if(uagentLow.search("android") > -1){
+		$("#android").show();
+	}else if(uagentLow.search("iphone") > -1){
+		$("#iphone").show();
+	}else{
+		$("#android").show();
+		$("#iphone").show();
+	}
+	
+	init();
+});
+	
+</script>
+<style>
+*{margin:0; padding:0;}
+html, body, .wrap{
+    width:100%; height:100%; 
+    font-family:"Malgun Gothic","돋움","Dotum","Arial","Helvetica Neue","Helvetica","Verdana","sans-serif";
+    font-size: 12px;
+}
+.wrap{position:relative; background:#ffffff; background-size:cover; text-align: center;}
+.title{font-size:3.75em; font-weight: bold; padding-top:5%; color:#626262;}
+.desc{font-size: 1.5em; line-height: 1.5; padding-top:2%; color:#777777;margin: 0px 20px 0px 10px;}
+.down_icon{padding-top: 3%;}
+.footer{position: absolute; bottom:28px; width:100%; text-align: center; color:#999999;}
+.footer small{font-size: 1em;}
+
+
+</style>
+</head>
+
+<body>
+    <div class="wrap">
+	    <p class="title">CALS Sales</p>
+        <img class="appIcon" style="width:50%;" src="1024x1024.png" alt="">
+	    <p class="desc">
+	    	please use a download available, so click the link below
+	    </p>
+<!--        <div class="down_icon">-->
+<!--            <a href="itms-services://?action=download-manifest&url=https://dl.dropboxusercontent.com/s/agh4sr46lbdmiac/manifest.plist" class="ios" id="iphone" style="display:;">DiaHunters iOS App Download(Real)</a>-->
+<!--            <a href="https://dl.dropboxusercontent.com/s/0j3aby3gl4vtz2l/DiaHunters-release.apk" class="android" id="android" style="display:;">DiaHunters Android Download(Real)</a>-->
+<!--        </div>-->
+<!--        ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <div class="down_icon">
+            <a href="itms-services://?action=download-manifest&url=https://dl.dropboxusercontent.com/s/ya9tiupu6at82qz/manifest_dev.plist" class="ios" id="iphone" style="display:;">iOS App Download(Beta)</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<!--            <a href="https://dl.dropboxusercontent.com/s/ovnmybkesjr2e8c/E1OrangeCard-debug.apk" class="android" id="android" style="display:;">Android App Download(Dev)</a>-->
+        </div>
+        <br/>
+<!--
+        <div><a href="https://testflight.apple.com/join/mOL7IUSu" target="_blank">iOS TestFlight Download(Real)</a>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://dl.dropboxusercontent.com/s/otm1cwi7gmwtjsd/E1OrangeCard-release.apk" class="android" id="android" style="display:;">Android App Download(Real)</a>
+        </div>
+-->
+	</div>
+    
+</body>
+</html>
